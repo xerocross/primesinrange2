@@ -2,12 +2,12 @@ package com.adamfgcross.primesinrange2.service;
 
 import java.math.BigInteger;
 
-public class PrimesInRangeJob {
+public class SubintJob {
 
 	private BigInteger rangeMin;
 	private BigInteger rangeMax;
 	
-	public PrimesInRangeJob(BigInteger rangeMin, BigInteger rangeMax) {
+	public SubintJob(BigInteger rangeMin, BigInteger rangeMax) {
 		super();
 		this.rangeMin = rangeMin;
 		this.rangeMax = rangeMax;
