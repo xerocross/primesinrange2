@@ -34,8 +34,8 @@ public class PrimesInRangeService {
 	
 	public PrimesInRangeService() {
 		executorService = Executors.newFixedThreadPool(NUM_THREADS);
-		JobSchedulerThread jobSchedulerThread = new JobSchedulerThread();
-		jobSchedulerThread.start();
+		JobEnqueuerThread jobEnqueuerThread = new JobEnqueuerThread();
+		jobEnqueuerThread.start();
 	}
 	
 	public void computePrimesInRange(PrimesInRangeRequest request) {
