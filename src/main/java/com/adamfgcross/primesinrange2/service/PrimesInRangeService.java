@@ -74,7 +74,7 @@ public class PrimesInRangeService {
 	
 	
 	/*
-	 * The purpose of the JobSchedulerThread is to break up the
+	 * The purpose of the JobEnqueuerThread is to break up the
 	 * overall computation into smaller jobs on subintervals (SubintJob)
 	 * which are then pushed onto the JobQueue, with the important
 	 * qualification that there is a maximum number of subinterval
@@ -85,7 +85,7 @@ public class PrimesInRangeService {
 	 * to schedule so many objects as to cause an out-of-memory
 	 * error. Here we avoid that.
 	 */
-	class JobSchedulerThread extends Thread {
+	class JobEnqueuerThread extends Thread {
 		
 		private LinkedList<PrimesInRangeJob> primesInRangeJobsQueue = new LinkedList<>();
 		
@@ -96,8 +96,7 @@ public class PrimesInRangeService {
 		public void PushNewPrimesInRangeJob(PrimesInRangeJob primesInRangeJob) {
 			primesInRangeJobsQueue.offer(primesInRangeJob);
 		}
-		
-		
+
 		public void run() {
 			while (!isTerminated) {
 				while (jobInProgress == null) {
@@ -121,9 +120,6 @@ public class PrimesInRangeService {
 					jobInProgress.allComputationsScheduled();
 					jobInProgress = null;
 				}
-				
-				
-				
 			}
 		}
 	}
